@@ -1,0 +1,385 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Donate</title>
+    <link rel="stylesheet" href="/css/donationpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}	
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode h1 {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode h2 {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode h3 {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode h4 {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode h5 {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+         </style>
+    
+</head>
+<body>
+
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+  
+			<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+			<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+            <nav class="navbar">
+                <div class="container">
+                    <a href="/homepage">
+                        <img src="/img/foodhub.png" width="125px">
+                    </a>
+                    <ul class="nav">
+                        <li><a th:href="profilePage">Profile</a></li>
+                        <li><a href="/leaderboard">Leaderboard</a></li>
+                        <li><a href="/foodbanks">Foodbanks</a></li>
+                        <li><a href="/donationpage">Donate</a></li>
+                        <li><a href="redeem">Redeem</a></li>
+                        <li><a th:href="@{/logout}">Logout</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="h1w">
+                <h2><br>Make A Donation Today</h2>
+            </div>
+            <div class="h2w">
+                <h3><br><br>Put a smile on people's faces with a good action<br><br><br></h3>
+            </div>
+            <div class="line">
+                <h3>Help<span class="tab"></span> &VerticalSeparator; <span class="tab"></span>    Donate  <span class="tab"></span>   &VerticalSeparator;  <span class="tab"></span>   Smile</h3>
+
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <br><br><br>
+                    <img src="/img/foodbankdonation.jpg">
+                </div>
+
+            </div>
+
+
+            </form>
+            <div class="main" id="section2">
+                <div>
+                    <br><br><br>
+                    <hr class="rounded">
+                </div>
+
+                <div class="donateheader">
+                    <h3 class="h3">1</h3>
+                    <h4 class="choose">Choose A Food Bank</h4>
+                </div>
+            </div>
+
+			<br>
+			
+          <section>
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d318158.4743572817!2d-0.48811200000000005!3d51.46526!3m2!1i1024!2i768!4f13.1!2m1!1sall%20food%20bank!5e0!3m2!1sen!2suk!4v1607109317790!5m2!1sen!2suk" width="100%" height="600" frameborder="0" style="border:1cm" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+          </section>
+          
+            <br><br><br><br><br><br>
+            <h5 class="chosenbank">You have chosen: </h5>
+            <div class="container3">
+                <input autoComplete="on" list="suggestions" style="width: 70%;" />
+                <datalist id="suggestions">
+                    <option>Hounslow Foodbank</option>
+                    <option>Feltham Foodbank</option>
+                    <option>Kingston Foodbank</option>
+                    <option>Epsom Foodbank</option>
+                    <option>The Trussel Trust Foodbank</option>
+                    <option>Brentford Foodbank</option>
+                    <option>Ealing Foodbank</option>
+                    <option>Hillingdon Foodbank</option>
+                    <option>Islington Foodbank</option>
+                </datalist>
+            </div>
+
+            <br><br><br>
+            <hr class="rounded">
+            <br><br><br><br><br>
+
+            <div class="amountdonate">
+                <h3 class="h3">2 </h3>
+                <h4 class="choose">Pick An Amount To Donate</h4>
+                <br><br><br><br><br>
+            </div>
+
+            <br>
+            <div class="container4">
+                <div id="smart-button-container">
+               		<div style="text-align: center"><label for="description">Reference </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div>
+                    <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a Donation Note</p>
+                    <div style="text-align: center"><label for="amount">Donate </label><input name="amountInput" type="number" id="amount" value=""></div>
+                    <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+                    <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value=""></div>
+                    <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+                    <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+                </div>
+                <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP" data-sdk-integration-source="button-factory"></script>
+                <script>
+                    function initPayPalButton() {
+                        var description = document.querySelector('#smart-button-container #description');
+                        var amount = document.querySelector('#smart-button-container #amount');
+                        var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+                        var priceError = document.querySelector('#smart-button-container #priceLabelError');
+                        var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+                        var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+                        var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+                        var elArr = [description, amount];
+
+                        if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+                            invoiceidDiv.style.display = "block";
+                        }
+
+                        var purchase_units = [];
+                        purchase_units[0] = {};
+                        purchase_units[0].amount = {};
+
+                        function validate(event) {
+                            return event.value.length > 0;
+                        }
+
+                        paypal.Buttons({
+                            style: {
+                                color: 'gold',
+                                shape: 'pill',
+                                label: 'pay',
+                                layout: 'vertical',
+
+                            },
+
+                            onInit: function (data, actions) {
+                                actions.disable();
+
+                                if (invoiceidDiv.style.display === "block") {
+                                    elArr.push(invoiceid);
+                                }
+
+                                elArr.forEach(function (item) {
+                                    item.addEventListener('keyup', function (event) {
+                                        var result = elArr.every(validate);
+                                        if (result) {
+                                            actions.enable();
+                                        } else {
+                                            actions.disable();
+                                        }
+                                    });
+                                });
+                            },
+
+                            onClick: function () {
+                                if (description.value.length < 1) {
+                                    descriptionError.style.visibility = "visible";
+                                } else {
+                                    descriptionError.style.visibility = "hidden";
+                                }
+
+                                if (amount.value.length < 1) {
+                                    priceError.style.visibility = "visible";
+                                } else {
+                                    priceError.style.visibility = "hidden";
+                                }
+
+                                if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                                    invoiceidError.style.visibility = "visible";
+                                } else {
+                                    invoiceidError.style.visibility = "hidden";
+                                }
+
+                                purchase_units[0].description = description.value;
+                                purchase_units[0].amount.value = amount.value;
+
+                                if (invoiceid.value !== '') {
+                                    purchase_units[0].invoice_id = invoiceid.value;
+                                }
+                            },
+
+                            createOrder: function (data, actions) {
+                                return actions.order.create({
+                                    purchase_units: purchase_units,
+                                });
+                            },
+
+                            onApprove: function (data, actions) {
+                                return actions.order.capture().then(function (details) {
+                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                });
+                            },
+
+                            onError: function (err) {
+                                console.log(err);
+                            }
+                        }).render('#paypal-button-container');
+                    }
+                    initPayPalButton();
+                </script>
+                <hr class="rounded">
+
+                <div>
+                    <h6 style="padding: 50px 50px; font-size: 30px; line-height: 50px;">Our Partners</h6>
+                </div>
+                <div class="row2">
+                    <div class="column2">
+                        <img src="/img/londis.png">
+                    </div>
+                    <div class="column2">
+                        <img src="/img/asda.png">
+                    </div>
+                    <div class="column2">
+                        <img src="/img/mns.png">
+                    </div>
+                    
+                    <div class="column2">
+                        <img src="/img/tesco.png">
+                    </div>
+                    <div class="column2">
+                        <img src="/img/nandos.jpg">
+                    </div>
+                </div>
+
+
+                <br><br><br><br><br><br>
+                <br><br><br><br><br><br>
+            </div>
+        
+        
+        <footer class="section-footer py-4 bg-primary">
+            <div class="container">
+              <div>
+                <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3>Company Info</h3>
+                <ul>
+                  <li class = "phone">Phone Number</li>
+                  <li class = "email">Email Address</li>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5>©2021 FoodHub, All Rights Reserved. </h5>
+              <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+          </footer>
+</body>
+		<script src="donation_page.js"></script>
+
+		<script>
+		
+		 var value = sessionStorage.getItem("dark");
+         
+         if(value == 0) {
+       	  
+       	  darkModeOn();
+         }
+         else if(value == 1) {
+       	  darkModeOff();
+         }
+         
+         
+         
+			function darkModeOn() {
+				
+				var element = document.body;
+				element.classList.add("darkMode");
+				
+				sessionStorage.setItem("dark", 0);
+				
+			}
+		
+			function darkModeOff() {
+				
+				var element = document.body;
+				element.classList.remove("darkMode");
+				
+				sessionStorage.setItem("dark", 1);
+				
+			}
+			
+		</script>
+
+
+</html>

@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    padding:0;
+    height: 100vh;
+}
+
+.errorMessage
+    {
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    
+}

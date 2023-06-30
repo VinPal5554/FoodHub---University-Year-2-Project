@@ -1,0 +1,267 @@
+    <!DOCTYPE html>
+        <html lang="en" xmlns:th="http://www.thymeleaf.org">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Food Banks Near You</title>
+        <link rel="stylesheet" href="/css/foodbanks.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+         <style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode th {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode tr {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode tr:hover {
+         	
+         		color: black;
+         	}
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+         </style>
+        
+        </head>
+        <body>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+
+			<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+			<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+            <nav class="navbar">
+
+            <div class="container">
+            	<a href="/homepage">
+                <img src = "/img/foodhub.png" width="125px">
+                </a>
+               <!--  <div class="switch">Dark Mode: <span class="inner-switch">OFF</span></div> -->
+              <ul class="nav">
+          		<li><a th:href="profilePage">Profile</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/foodbanks">Foodbanks</a></li>
+                <li><a href="/donationpage">Donate</a></li>
+                <li><a href="redeem">Redeem</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+
+              </ul>
+            </div>
+          </nav>
+          
+          <div align = "center">
+           <form th:action="@{'/foodbanks/1'}">
+     			<input type="hidden" name = "sortField" th:value= "${sortField}" />
+    			 <input type="hidden" name = "sortDir" th:value= "${sortDir}" />
+   			 <input type="hidden" name="keyword"  th:value ="${keyword}"  required/>
+   			 &nbsp;
+    			<input class="btn btn-primary" type="hidden" value="Search"/>
+   				 &nbsp;
+   			 <input type="hidden" value="Clear" class="btn btn-danger" id="btnClear" onclick="clearSearch()" />
+   			 </form>
+		  </div>
+		  <br><br><br>
+          <h2 class="foodbankTitle" style="font-size: 60px; font-weight: bold"> Food Banks Near You</h2>
+          
+          <br><br><br><br>
+          <br>
+            <section class="section-b">
+            <table class="table">
+            <thead>
+                <tr id="header">
+                <th>
+                <a th:href = "@{'/foodbanks/' + ${currentPage} + '?sortField=username&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+                Food Bank
+                </a>
+                </th>
+                  <th>Address</th>
+                  <th>Description</th>
+                  <th>High Priority (100 Points)</th>
+                  <th>Medium Priority (50 Points)</th>
+                  <th>Low Priority (20 Points)</th>
+                  <th>Donate Today!</th>
+                </tr>
+		      </thead>
+            <tbody>
+                <tr th:each="User : ${listUsers}">
+		          <td th:text="${User.username}">username</td>
+                  <td th:text="${User.address}">address</td>
+                  <td th:text="${User.description}">description</td>
+                  <td th:text="${User.priorityMost}">Most Priority</td>
+                  <td th:text="${User.priorityMiddle}">Some Priority</td>
+                  <td th:text="${User.priorityLeast}">Least Priority</td> 
+                  <td>  
+				  <button onclick="alertUser()" type="submit">Donate</button>
+     			 </td>
+		        </tr>
+            
+            </tbody>
+                </table>
+                
+<br>
+                
+<div align = "center">
+
+&nbsp;
+
+Total Users: [[${totalUsers}]] - page [[${currentPage}]] of [[${totalPages}]]
+
+&nbsp; - &nbsp;
+
+ <a th:if="${currentPage > 1}" th:href="@{'/foodbanks/'+ ${1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">First</a>
+<span th:unless="${currentPage > 1}">First</span>
+&nbsp;&nbsp;
+ <a th:if="${currentPage > 1}" th:href="@{'/foodbanks/'+ ${currentPage - 1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">Previous</a>
+<span th:unless="${currentPage > 1}">Previous</span>
+&nbsp;&nbsp;
+
+<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+&nbsp;&nbsp;
+<a th:if="${i != currentPage}" th:href="@{'/foodbanks/' + ${i}} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}">[[${i}]]</a>&nbsp;&nbsp;
+<span th:unless="${i != currentPage}">[[${i}]]</span>&nbsp;&nbsp;
+</span>
+
+&nbsp;&nbsp;
+ <a th:if="${currentPage < totalPages}" th:href="@{'/foodbanks/'+ ${currentPage + 1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Next</a>
+ <span th:unless="${currentPage < totalPages}">Next</span>
+
+ &nbsp;&nbsp;
+ <a th:if="${currentPage < totalPages}" th:href="@{'/foodbanks/'+ ${totalPages} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
+ <span th:unless="${currentPage < totalPages}">Last</span>
+</div>
+</section>
+
+<br><br><br>
+
+            
+            <!-- Gallery -->
+          <section class="section-c">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d318158.4743572817!2d-0.48811200000000005!3d51.46526!3m2!1i1024!2i768!4f13.1!2m1!1sall%20food%20bank!5e0!3m2!1sen!2suk!4v1607109317790!5m2!1sen!2suk" width="100%" height="600" frameborder="0" style="border:1cm" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+          </section>
+        
+             <script type="text/javascript" src="/js/foodbanks.js"></script>
+            
+            <footer class="section-footer py-4 bg-primary">
+            <div class="container">
+              <div>
+                <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3>Company Info</h3>
+                <ul>
+                  <li class = "phone">Phone Number</li>
+                  <li class = "email">Email Address</li>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5>©2021 FoodHub, All Rights Reserved. </h5>
+              <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+          </footer>
+        
+			<script>
+			
+			 var value = sessionStorage.getItem("dark");
+	          
+	          if(value == 0) {
+	        	  
+	        	  darkModeOn();
+	          }
+	          else if(value == 1) {
+	        	  darkModeOff();
+	          }
+	          
+	          
+	          
+				function darkModeOn() {
+					
+					var element = document.body;
+					element.classList.add("darkMode");
+					
+					sessionStorage.setItem("dark", 0);
+					
+				}
+	 		
+	 			function darkModeOff() {
+	 				
+	 				var element = document.body;
+					element.classList.remove("darkMode");
+	 				
+	 				sessionStorage.setItem("dark", 1);
+	 				
+	 			}
+	 			
+			</script>
+			
+			<script type="text/javascript">
+  		 	 function clearSearch() {
+      		  window.location = "[[@{/foodbanks}]]";
+    		 }
+		    </script>
+		    
+        </body>
+        </html> 

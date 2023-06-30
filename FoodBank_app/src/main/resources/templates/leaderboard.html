@@ -1,0 +1,212 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Rankings</title>
+    <link rel="stylesheet" href="/css/leaderboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+     <style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}	
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode th {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode tr {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode tr:hover {
+         	
+         		color: black;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+         </style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+
+	<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+	<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+    <nav class="navbar">
+
+        <div class="container">
+            <a href="/homepage">
+                <img src="img/foodhub.png" width="125px">
+            </a>
+           
+            <ul class="nav">
+                <li><a th:href="profilePage">Profile</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/foodbanks">Foodbanks</a></li>
+                <li><a href="/donationpage">Donate</a></li>
+                <li><a href="redeem">Redeem</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div align="center">
+        <br /><br />
+        <div>&nbsp;</div>
+    </div>
+    <div align="center">
+        <h2 style="font-size: 60px; font-weight: bold">Leaderboard</h2>
+        <br>
+
+        <div>&nbsp;</div>
+
+        <table border="1" cellpadding="10" id="leaderboard">
+            <thead>
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Points
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="User : ${listUsers}">
+                    <td th:text="${User.username}">UserName</td>
+                    <td th:text="${User.points}">Points</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	<br>
+	<br>
+
+    <div class="post-divider2">
+        <h3>Put a smile on people's faces with a good action</h3>
+        <div class="gallery">
+            <div class="gallery-container">
+                <img class="gallery-item" src="/img/care1.jpg">
+                <img class="gallery-item" src="/img/carouselimage2.jpg">
+                <img class="gallery-item" src="/img/carouselimage3.jpg">
+                <img class="gallery-item" src="/img/carouselimage7.jpg">
+                <img class="gallery-item" src="/img/carouselimage6.jpg">
+            </div>
+            <div class="gallery-controls"></div>
+        </div>
+
+        <script src="/js/carousel.js"></script>
+    </div>
+
+    <footer class="section-footer py-4 bg-primary">
+        <div class="container">
+          <div>
+            <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+          </div>
+          <div>
+            <h3>Company Info</h3>
+            <ul>
+              <li class = "phone">Phone Number</li>
+              <li class = "email">Email Address</li>
+              <li><a href="/aboutus">About Us</a></li>
+              <li><a href="/feedback">Feedback</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Contact Info</h3>
+            <ul>
+              <li>+44 (0)1234567890</li>
+              <li>Foodhub010@gmail.com</li>
+
+            </ul>
+          </div>
+        </div>
+        <div class = "cr">
+          <h5>©2021 FoodHub, All Rights Reserved. </h5>
+          <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+        </div>
+      </footer>
+
+
+    <script src="/js/scripts.js"></script>
+    
+    <script>
+    
+    var value = sessionStorage.getItem("dark");
+    
+    if(value == 0) {
+  	  
+  	  darkModeOn();
+    }
+    else if(value == 1) {
+  	  darkModeOff();
+    }
+    
+    
+    
+		function darkModeOn() {
+			
+			var element = document.body;
+			element.classList.add("darkMode");
+			
+			sessionStorage.setItem("dark", 0);
+			
+		}
+	
+		function darkModeOff() {
+			
+			var element = document.body;
+			element.classList.remove("darkMode");
+			
+			sessionStorage.setItem("dark", 1);
+			
+		}
+	</script>
+    
+</body>
+</html>

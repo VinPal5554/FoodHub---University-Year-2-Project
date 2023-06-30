@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up | Foodbank</title>
+<link rel="stylesheet" href="/css/registration.css">
+</head>
+<body>
+
+<div id="particles-js">
+        <script type="text/javascript" src="/js/particles.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        
+        <form th:action="@{/businessregistration}" class="textbox" action="" method="POST" th:object = "${user}">
+        
+            <h1>Register Details</h1>
+            
+            <input type="text" th:field="*{username}" placeholder="Username">
+            <input type="text" th:field="*{address}" placeholder="Address">
+            <input type="number" th:field="*{phoneNum}"placeholder="Contact Number"> 
+            <input type="email" th:field="*{email}" placeholder="Email"> 
+            <input type="password" th:field="*{password}" placeholder="Password"> 
+            <input type="text" name="" th:field="*{description}" placeholder="Description"> 
+            <input type="submit" name="" value="Sign Up">
+            <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+            </form>
+</div>
+
+</body>
+</html>

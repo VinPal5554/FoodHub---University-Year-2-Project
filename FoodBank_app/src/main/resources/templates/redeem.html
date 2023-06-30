@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Redeem Points</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/redeem.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}	
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+         </style>
+</head>
+<body>
+
+ <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+
+	<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+	<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+    <nav class="navbar">
+         
+            <div class="container">
+            	<a href="/homepage">
+                <img src = "/img/foodhub.png" width="125px">
+                </a>
+               <!--  <div class="switch">Dark Mode: <span class="inner-switch">OFF</span></div> -->
+              <ul class="nav">
+          		<li><a th:href="profilePage">Profile</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/foodbanks">Foodbanks</a></li>
+                <li><a href="/donationpage">Donate</a></li>
+                <li><a href="redeem">Redeem</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+                
+              </ul>
+            </div>
+          </nav>
+   
+
+    <!-- Showcase -->
+    <section class="section-a">
+        <div class="container">
+            <div>
+                <h1>Redeem a voucher</h1>
+                <br>
+                <p>Save up points from your donations to get exclusive discounts/vouchers on top brands</p>
+                <br>
+                <h2>My Points:</h2>
+                <br>
+                <h1 th:text="${user.points}"></h1>
+              
+            </div>
+            <img src="/img/r1.jpg" alt="" />
+        </div>
+    </section>
+
+    <!-- Large Text -->
+    <section id="about" class="section-b">
+        <div class="overlay">
+            <div class="section-b-inner py-5">
+                <h3 class="text-2">Donate & Redeem</h3>
+                <h2 class="text-5 mt-1">Vouchers</h2>
+                <p class="mt-1">
+                    Our partners offer you various discounts that you can use when you checkout at their online store or at the shop directly.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <form th:action="@{'/redeemtran/'}" th:object="${user}" method="put">
+        <input type="hidden" th:field="${user.id}">
+     	<input type="hidden" th:field="${user.firstName}">
+     	<input type="hidden" th:field="${user.lastName}">
+     	<input type="hidden" th:field="${user.DOB}">
+     	<input type="hidden" th:field="${user.phoneNum}">
+     	<input type="hidden" th:field="${user.email}">
+     	<input type="hidden" th:field="${user.points}">
+     	<input type="hidden" th:field="${user.voucherCodes}">
+     	<section class="section-c">
+        	<div class="gallery">
+        
+        		<button class="asda1 gallery1" id="redeem1" type="submit">
+        			<img class="redeemimg" src="/img/asda.jpg" />
+        		</button>
+        		
+       			<button class="mAS1 gallery2" id="redeem2" type="submit">
+        			<img class="redeemimg" src="/img/M&S.jpg" />
+        		</button>
+        		
+       			<button class="nandos1 gallery3" id="redeem3" type="submit">
+        			<img class="redeemimg" src="/img/nandosredeem.jpg" />
+        		</button>
+        		
+        		<button class="uberEats1 gallery4" id="redeem4" type="submit">
+        			<img class="redeemimg" src="/img/ubereats.jpg" />
+       		    </button>
+       		    
+        		<button class="mAS2 gallery5" id="redeem5" type="submit">
+        			<img class="redeemimg" src="/img/M&S.jpg" />
+       			</button>
+       			
+        		<button class="uberEats2 gallery6" id="redeem6" type="submit">
+        			<img class="redeemimg" src="/img/ubereats.jpg" />
+        		</button>
+        		
+        		<button class="nandos2 gallery7" id="redeem7" type="submit">
+        			<img class="redeemimg" src="/img/nandosredeem.jpg" />
+      			</button>
+      			
+        		<button class="uberEats3 gallery8" id="redeem8" type="submit">
+        			<img class="redeemimg" src="/img/ubereats.jpg" />
+     		   </button>
+     		   
+      		   <button class="asda2 gallery9" id="redeem9" type="submit">
+        			<img class="redeemimg" src="/img/asda.jpg" />
+       		   </button>
+       			
+       		   <button class="asda3 gallery10" id="redeem10" type="submit">
+        	 		<img class="redeemimg" src="/img/asda.jpg" />
+        	   </button>
+     
+             
+           </div>
+      </section>
+     	
+     	
+     </form>
+     
+    <footer class="section-footer py-4 bg-primary">
+            <div class="container">
+              <div>
+                <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3>Company Info</h3>
+                <ul>
+                  <li class = "phone">Phone Number</li>
+                  <li class = "email">Email Address</li>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5>©2021 FoodHub, All Rights Reserved. </h5>
+              <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+          </footer>
+    
+    <script>
+    
+    var determineCost = 0;
+    
+   	var redeem1 = document.getElementById("redeem1");
+   	var redeem2 = document.getElementById("redeem2");
+   	var redeem3 = document.getElementById("redeem3");
+   	var redeem4 = document.getElementById("redeem4");
+   	var redeem5 = document.getElementById("redeem5");
+   	var redeem6 = document.getElementById("redeem6");
+   	var redeem7 = document.getElementById("redeem7");
+   	var redeem8 = document.getElementById("redeem8");
+   	var redeem9 = document.getElementById("redeem9");
+   	var redeem10 = document.getElementById("redeem10");
+   		
+   	redeem1.onclick = function() {
+   		determineCost = 1;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem2.onclick = function() {
+   		determineCost = 2;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem3.onclick = function() {
+   		determineCost = 3;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem4.onclick = function() {
+   		determineCost = 4;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem5.onclick = function() {
+   		determineCost = 5;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem6.onclick = function() {
+   		determineCost = 6;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem7.onclick = function() {
+   		determineCost = 7;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem8.onclick = function() {
+   		determineCost = 8;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem9.onclick = function() {
+   		determineCost = 9;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+   	redeem10.onclick = function() {
+   		determineCost = 10;
+   		sessionStorage.setItem("value", determineCost);
+   	}
+    
+    
+    </script>
+    
+    <script>
+    
+    var value = sessionStorage.getItem("dark");
+    
+    if(value == 0) {
+  	  
+  	  darkModeOn();
+    }
+    else if(value == 1) {
+  	  darkModeOff();
+    }
+    
+    
+    
+		function darkModeOn() {
+			
+			var element = document.body;
+			element.classList.add("darkMode");
+			
+			sessionStorage.setItem("dark", 0);
+			
+		}
+	
+		function darkModeOff() {
+			
+			var element = document.body;
+			element.classList.remove("darkMode");
+			
+			sessionStorage.setItem("dark", 1);
+			
+		}
+		
+		</script>
+  
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+<title>Admin Portal</title>
+	<link rel="stylesheet" href="/css/dummyadmin.css">
+ <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  <style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}	
+         	
+         	.darkMode td {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+        </style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+	
+	<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+	<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+    <div class="container">
+        <nav class = "navbar">
+            
+                <a href="/adminhomepage">
+                <img src = "/img/foodhub.png" width="125px">
+                </a>
+            
+                
+                <ul class ="nav">
+                <li><a class="editAdmin" th:href="@{/editadmin}">Profile</a></li>
+                <li><a class="logoutAdmin" th:href="@{/logout}">Logout</a></li>
+            	</ul>
+        </nav>
+    </div>
+    
+   
+    
+    
+    
+    
+    
+    
+        <div class="row">
+            <div>
+            <br><br><br><br>
+                <h1>Welcome, <span sec:authentication="principal.username">User</span> To The  Admin Page</h1>
+                <div>
+                    &nbsp;
+                </div>
+            </div>
+    </div>
+    <hr class="rounded">
+
+
+
+<div>
+<div align = "center">
+    <br/><br/>
+    <div>&nbsp;</div>
+    </div>
+    <div align = "center">
+    <h1>Foodhub Users</h1>
+    <br>
+<!--      <a href="/newuser" class="btn btn-primary">Create New User</a> -->
+     <br><br>
+     <form th:action="@{'/admin/1'}">
+     <input type="hidden" name = "sortField" th:value= "${sortField}" />
+     <input type="hidden" name = "sortDir" th:value= "${sortDir}" />
+    Filter:
+    <input type="text" name="keyword"  th:value ="${keyword}"  required/>
+    &nbsp;
+    <input class="btn btn-primary" type="submit" value="Search"/>
+    &nbsp;
+    <input type="button" value="Clear" class="btn btn-danger" id="btnClear" onclick="clearSearch()" />
+    </form>
+    </div>
+    
+    <div>&nbsp;</div>
+    
+			<table class="table table-striped table-bordered">
+				<thead class="thead-dark">
+            <tr>
+                <th>
+                <a th:href = "@{'/admin/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+                User ID
+                </a>
+                </th>
+                <th>
+                <a th:href = "@{'/admin/' + ${currentPage} + '?sortField=username&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+                User Name
+                </a>
+                </th>
+                <th>
+                <a th:href = "@{'/admin/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+                First Name
+                </th>
+                </a>
+                <th>
+                <a th:href = "@{'/admin/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+                Last Name
+                </a>
+                </th>
+                <th>DOB</th>
+                <th>Phone number</th>
+                <th>E-mail</th>
+                <th>
+                <a th:href = "@{'/admin/' + ${currentPage} + '?sortField=points&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+                Points
+                </a>
+                </th>
+                <th>
+                    <a href="/newuser" class="btn btn-primary">Create New User</a>
+                    </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="User : ${listUsers}">
+                <td th:text="${User.id}">User ID</td>
+                  <td th:text="${User.username}">User Name</td>
+                  <td th:text="${User.firstName}">Last Name</td>
+                 <td th:text="${User.lastName}">Last Name</td>
+                <td th:text="${User.DOB}">DOB</td>
+                <td th:text="${User.phoneNum}">Phone Number</td>
+                <td th:text="${User.email}">Email</td>
+                <td th:text="${User.points}">Points</td>
+                
+                    <td>
+                     <a th:href="@{'/edit/'+${User.id}}" class="btn btn-primary">Edit</a>
+                    
+                    <a th:href="@{'/delete/'+${User.id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div align = "center">
+
+&nbsp;
+
+Total Users: [[${totalUsers}]] - page [[${currentPage}]] of [[${totalPages}]]
+&nbsp; - &nbsp;
+
+ <a th:if="${currentPage > 1}" th:href="@{'/admin/'+ ${1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">First</a>
+<span th:unless="${currentPage > 1}">First</span>
+&nbsp;&nbsp;
+ <a th:if="${currentPage > 1}" th:href="@{'/admin/'+ ${currentPage - 1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">Previous</a>
+<span th:unless="${currentPage > 1}">Previous</span>
+&nbsp;&nbsp;
+
+<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+&nbsp;&nbsp;
+<a th:if="${i != currentPage}" th:href="@{'/admin/' + ${i}} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}">[[${i}]]</a>&nbsp;&nbsp;
+<span th:unless="${i != currentPage}">[[${i}]]</span>&nbsp;&nbsp;
+</span>
+
+&nbsp;&nbsp;
+ <a th:if="${currentPage < totalPages}" th:href="@{'/admin/'+ ${currentPage + 1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Next</a>
+ <span th:unless="${currentPage < totalPages}">Next</span>
+ 
+ &nbsp;&nbsp;
+ <a th:if="${currentPage < totalPages}" th:href="@{'/admin/'+ ${totalPages} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
+ <span th:unless="${currentPage < totalPages}">Last</span>
+</div>
+</body>
+
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/adminhomepage}]]";
+    }
+</script>
+
+
+<br><br><br><br><br>
+
+<div align = "center">
+    <h1>Feedback</h1>
+    <br/><br/>
+			<table class="table table-striped table-bordered">
+				<thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Feedback</th>
+                <th>Remove Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="Feedback : ${showfeedback}">
+                <td th:text="${Feedback.id}">User ID</td>
+                <td th:text="${Feedback.feedback}">Feedback</td>
+                
+                    <td>
+<!--                       <a th:href="@{'/edit/'+${User.id}}">Edit</a> -->
+                    
+                    <a th:href="@{'/deletefeedback/'+${Feedback.id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+ <footer class="section-footer">
+            <div class="container">
+              <div>
+                <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3>Company Info</h3>
+                <ul>
+                  <li class = "phone">Phone Number</li>
+                  <li class = "email">Email Address</li>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5>©2021 FoodHub, All Rights Reserved. </h5>
+              <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+          </footer>
+
+
+	<script>
+	
+var value = sessionStorage.getItem("dark");
+    
+    if(value == 0) {
+  	  
+  	  darkModeOn();
+    }
+    else if(value == 1) {
+  	  darkModeOff();
+    }
+    
+    
+    
+		function darkModeOn() {
+			
+			var element = document.body;
+			element.classList.add("darkMode");
+			
+			sessionStorage.setItem("dark", 0);
+			
+		}
+	
+		function darkModeOff() {
+			
+			var element = document.body;
+			element.classList.remove("darkMode");
+			
+			sessionStorage.setItem("dark", 1);
+			
+		}
+		
+	</script>
+
+
+</html>

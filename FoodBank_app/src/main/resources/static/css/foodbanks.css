@@ -1,0 +1,246 @@
+:root {
+  --primary-color: #333;
+  --secondary-color: #444;
+  --overlay-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  .navbar .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+  }
+  
+  body {
+  font-family: 'Catamaran', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  font-size: 1.1rem;
+  
+}
+
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .navbar .logo {
+    width: 200px;
+  }
+  .navbar ul {
+    justify-self: flex-end;
+    display: flex;
+    align-items: center top;
+    justify-content: center;
+  }
+  .navbar a {
+    padding: 0 1rem;
+  }
+  .navbar a:hover {
+    color: #555;
+  }
+  
+  	h1,
+	h2,
+	h3,
+	h4 {
+ 	 line-height: 1.3;
+	}
+
+  ul {
+    list-style: none;
+  }
+  
+  a{
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+  }
+
+.section-c .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .section-c .gallery a:first-child {
+    /* grid-row-start: 1;
+    grid-row-end: 3; */
+    grid-row: 1/3;
+    grid-column: 1/3;
+  }
+  
+  .section-c .gallery a:nth-child(2) {
+    grid-column-start: 3;
+    grid-column-end: 5;
+  }
+  
+  .section-c .gallery img,
+  .section-c .gallery a {
+    width: 100%;
+    height: 100%;
+  }
+
+
+p{
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 2%;
+    margin-top: 10%;
+    text-align: center;
+}
+
+ .darkModeButton {
+	
+	display: inline-block;
+  	background: var(--primary-color);
+  	color: #fff;
+  	padding: 0.4rem 0.7rem;
+  	border: none;
+  	cursor: pointer;
+  	font-size: 1.1rem;
+  
+}
+
+.darkModeButton:hover {
+	
+	background-color: var(--secondary-color);
+
+}
+ 
+
+
+.table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid #ddd;
+  text-align: center;
+  font-size:16px;
+}
+
+.table th{
+	background-color: #4CAF50;
+	color: black;
+    height: 100px;
+    
+}
+
+.table tr {
+    height: 70px;
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+
+.table tr:hover {
+    background-color: beige;
+    transform: scale(1.02);
+
+}
+
+.section-footer {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 4rem 0;
+  }
+  
+  .section-footer .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
+  
+  .section-footer h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-footer h3 {
+    margin-bottom: 0.7rem;
+  }
+
+  .section-footer h5{
+    margin-left: 100px;
+    margin-top: 60px;
+    color :rgb(112, 112, 112);
+  }
+  
+  .section-footer a {
+    line-height: 1.9;
+    color: rgb(252, 252, 252);
+  }
+  
+  .section-footer a > i {
+    color: rgb(255, 255, 255);
+    margin-right: 0.5rem;
+  }
+
+
+
+/*responsive*/
+
+@media(max-width: 500px){
+	.table thead{
+		display: none;
+	}
+
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+	.table tr{
+		margin-bottom:15px;
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+}
+
+ .foodbankTitle {
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

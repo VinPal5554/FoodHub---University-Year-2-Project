@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<div id="particles-js">
+        <script type="text/javascript" src="/js/particles.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        
+	<form class="textbox" th:action="@{/login}" method="POST">
+   
+      <h1>Login</h1>
+        
+      <div th:if="${param.error}">
+        <p>Invalid Username or Password</p>
+      </div>
+      <div th:if="${param.logout}">
+            <div class="logout alert">You have been logged out</div>
+       </div>
+        
+        <label for="username"></label> <input type="text" name="username" placeholder="Username">
+        <label for="password"></label> <input type="password" name="password" placeholder="Password"> 
+        <p>
+        <input type ="checkbox" name="remember-me" /> Remember me on this computer 
+        </p>
+        <input type="submit" name="button1" value="Login">
+        <hr>
+        <p class="or">OR</p>
+		<span>New user? <a href="/" th:href="@{/registration}">Register here</a></span>
+		
+	  <p>
+        <a href="/" th:href="@{/forgot_password}">Forgot Password?</a>
+	  </p>	
+	  <p><a href="/" th:href="@{/businessregistration}">Business Portal</a></p>
+		
+	</form>
+
+</div>
+
+</body>
+</html>

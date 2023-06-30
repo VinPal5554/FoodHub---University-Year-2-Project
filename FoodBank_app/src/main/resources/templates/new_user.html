@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up</title>
+<link rel="stylesheet" href="/css/registration.css">
+</head>
+<body>
+
+<div id="particles-js">
+        <script type="text/javascript" src="/js/particles.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        
+        <form th:action="@{/newuser}" class="textbox" action="" method="POST" th:object = "${user}">
+        
+            <h1>Register Details</h1>
+            
+            <input type="text" th:field="*{username}" placeholder="Username" required>
+            <input type="text" th:field="*{firstName}" placeholder="First Name" required>
+            <input type="text" th:field="*{lastName}" placeholder="Last Name" required> 
+            <input type="date" th:field="*{DOB}" placeholder="Date of Birth" required> 
+            <input type="password" th:field="*{password}" placeholder="Password" required> 
+            <input type="email" name="" th:field="*{email}" placeholder="Email" required> 
+            <input type="number" name="" th:field="*{phoneNum}" placeholder="Contact Number" required> 
+            <input type="submit" name="" value="Sign Up">
+            <span>Return to Admin page<a href="/adminhomepage" > here</a></span>
+            </form>
+            
+</div>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Edit User</title>
+<link rel="stylesheet" href="/css/edit_user.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode .btn {
+         		
+         		background-color: white;
+         		color: black;
+         	}
+         	
+         	.darkMode .btn:hover {
+         	
+         		background-color: grey;
+         		color: white;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+         	
+         	
+        </style>
+</head>
+<body>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+	
+	<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+	<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+	
+	<nav class="navbar">
+         
+            <div class="container">
+            	<a href="/adminhomepage">
+                <img src = "/img/foodhub.png" width="125px">
+                </a>
+               <!--  <div class="switch">Dark Mode: <span class="inner-switch">OFF</span></div> -->
+              <ul class="nav">
+          		<li><a th:href="@{/editadmin}">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+                
+              </ul>
+            </div>
+    </nav>
+
+
+
+
+    <div align="center">
+        <h1>Edit User</h1>
+        <br />
+        <form action="#" th:action="@{/save3}" th:object="${user}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>             
+                    <td>User ID:</td>
+                    <td>
+                        <input type="text" th:field="*{id}" readonly="readonly" />
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>User Name:</td>
+                    <td>
+                        <input type="text" th:field="*{username}" readonly="readonly" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" th:field="*{firstName}"/></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" th:field="*{lastName}"/></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" th:field="*{password}" required/></td>
+                </tr>
+                <tr>
+                    <td>DOB:</td>
+                    <td><input type="text" th:field="*{DOB}"/></td>
+                </tr> 
+                 <tr>
+                    <td>Phone number:</td>
+                    <td><input type="text" th:field="*{phoneNum}"/></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="text" th:field="*{email}"/></td>
+                </tr>
+                <tr>
+                    <td>Points</td>
+                    <td><input type="text" th:field="*{points}" /></td>
+                </tr>
+                <tr>
+                    <td>Vouchers</td>
+                    <td><input type="text" th:field="*{voucherCodes}" /></td>
+                </tr>
+                <tr>
+                    <td>My Donations</td>
+                    <td><input type="text" th:field="*{myDonations}"  /></td>
+                </tr>
+                <tr>
+                    <td>Business Details</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Role Type</td>
+                    <td><input type="text" th:field="*{roleType}" /></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><input type="text" th:field="*{address}" /></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><input type="text" th:field="*{description}" /></td>
+                </tr>
+                                <tr>
+                    <td>Least Priority</td>
+                    <td><input type="text" size="28" th:field="*{priorityLeast}" /> </td>
+                </tr>
+                                <tr>
+                    <td>Middle Priority</td>
+                    <td><input type="text" size="28" th:field="*{priorityMiddle}"  /></td>
+                </tr>
+                                <tr>
+                    <td>High Priority</td>
+                    <td><input type="text" size="28" th:field="*{priorityMost}"  /></td>
+                </tr>
+                
+                <tr>
+                 <td>User role id</td>
+                    <th:block th:each="role : ${listRoles}">
+                    <div>
+					<td><input type="checkbox" th:field="*{roles}" th:text="${role.name}" th:value="${role.id}" required /></td>
+					</div>
+					</th:block>       
+				</tr>                   
+                <tr>
+                    <td colspan="2"><button class="darkModeButton" type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <footer class="section-footer py-4 bg-primary">
+            <div class="container">
+              <div>
+                <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3>Company Info</h3>
+                <ul>
+                  <li class = "phone">Phone Number</li>
+                  <li class = "email">Email Address</li>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5>©2021 FoodHub, All Rights Reserved. </h5>
+              <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+            
+          </footer>
+          
+          <script>
+		
+		 var value = sessionStorage.getItem("dark");
+		    
+		    if(value == 0) {
+		  	  
+		  	  darkModeOn();
+		    }
+		    else if(value == 1) {
+		  	  darkModeOff();
+		    }
+		    
+		    
+		    
+				function darkModeOn() {
+					
+					var element = document.body;
+					element.classList.add("darkMode");
+					
+					sessionStorage.setItem("dark", 0);
+					
+				}
+			
+				function darkModeOff() {
+					
+					var element = document.body;
+					element.classList.remove("darkMode");
+					
+					sessionStorage.setItem("dark", 1);
+					
+				}
+		</script>
+    
+</body>
+</html>

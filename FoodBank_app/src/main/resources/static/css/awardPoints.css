@@ -1,0 +1,181 @@
+:root {
+    --primary-color: #333;
+    --secondary-color: #444;
+    --overlay-color: rgba(0, 0, 0, 0.7);
+  }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Catamaran', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  font-size: 1.1rem;
+  
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.3;
+}
+
+a {
+    color: #444;
+    text-decoration: none;
+  }
+  
+  ul {
+  list-style: none;
+	}
+	
+	.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+  }
+
+.navbar {
+    font-size: 1.2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+
+  }
+  
+.navbar .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.navbar .logo {
+  width: 200px;
+}
+
+.navbar ul {
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a {
+  padding: 0 1rem;
+}
+.navbar a:hover {
+  color: #555;
+}
+
+.darkModeButton {
+	
+	display: inline-block;
+  	background: var(--primary-color);
+  	color: #fff;
+  	padding: 0.4rem 0.7rem;
+  	border: none;
+  	cursor: pointer;
+  	font-size: 1.1rem;
+  
+}
+
+.darkModeButton:hover {
+	
+	background-color: var(--secondary-color);
+
+}
+
+.pointButton {
+	
+	display: inline-block;
+  	background: var(--primary-color);
+  	color: #fff;
+  	padding: 0.4rem 0.7rem;
+  	border: none;
+  	cursor: pointer;
+  	font-size: 1.1rem;
+	
+}
+
+.pointButton:hover {
+	
+	background-color: var(--secondary-color);
+	
+}
+
+.section-a h2{
+  background: linear-gradient(90deg, rgba(58,61,56,1) 0%, rgba(176,227,148,1) 82%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-a h1 {
+  font-size: 4rem;
+  color: var(--primary-color);
+}
+
+.section-a input{
+    width: 400px;
+    height: 35px;
+}
+
+.section-a input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+.section-a h3{
+    margin-top: 20px;
+}
+
+.section-a p {
+  margin: 1rem 0;
+}
+
+.section-a .container input[type="checkbox"]{
+  margin-left: -180px;
+  margin-top: 20px;
+}
+
+.section-footer {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 4rem 0;
+}
+
+.section-footer .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+.section-footer h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section-footer h3 {
+  margin-bottom: 0.7rem;
+}
+
+.section-footer h5{
+  margin-left: 100px;
+  margin-top: 60px;
+  color :rgb(112, 112, 112);
+}
+
+.section-footer a {
+  line-height: 1.9;
+  color: rgb(252, 252, 252);
+}
+
+.section-footer a > i {
+  color: rgb(255, 255, 255);
+  margin-right: 0.5rem;
+}
+  
+ 
+  

@@ -1,0 +1,370 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> FoodHub | Homepage</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/slicknav.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="/css/gijgo.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/animated-headline.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/themify-icons.css">
+	<link rel="stylesheet" href="/css/slick.css">
+	<link rel="stylesheet" href="/css/nice-select.css">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="/img/foodhub.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top d-none d-lg-block">
+                    <div class="container-fluid">
+                        <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-right d-flex align-items-center">
+                                    <div class="select-this">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="/homepage"><img src="/img/foodhub.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">                                                                                          
+                                                <li><a th:href="profilePage">Profile</a></li>
+                                                <li><a href="/leaderboard">Leaderboard</a></li>
+                                                <li><a href="/foodbanks">Food Banks </a></li>
+                                                <li><a href="/redeem">Redeem</a></li>
+                                                <li><a th:href="@{/logout}">Logout</a></li>
+                                                    <ul class="submenu">
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="blog_details.html">Blog Details</a></li>
+                                                        <li><a href="elements.html">Element</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!-- Header-btn -->
+                                    <div class="header-right-btn d-none d-lg-block ml-20">
+                                        <a href="/donationpage" class="btn header-btn">Donate</a>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <!-- header end -->
+    <main>
+    <!-- slider Area Start-->
+    <div class="slider-area">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div style="padding-bottom: 0cm;" class="single-slider slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10">
+                            <div class="hero__caption">
+                                
+                                <div style="position: fixed; left: 5%; top: 15%;" data-animation="fadeInUp" data-delay=".3s">
+                                	<h1>Welcome, <h1 sec:authentication="principal.username">User</h1></h1>
+                                </div>
+                                
+                                <P style="position: fixed; left: 5%; top: 40%;" data-animation="fadeInUp" data-delay=".8s" >Check out where supply is
+                                    needed and donate to earn more
+                                    rewards!</P>
+                                <!-- Hero-btn -->
+                                <div style="position: fixed; left: 5%; top: 50%;" class="hero__btn">
+                                    <a href="/donationpage" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">Donate</a>
+                                   
+                                       
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slider -->
+            <div class="single-slider slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10">
+                            <div class="hero__caption">
+                                <h1 data-animation="fadeInUp" data-delay=".6s">Put a smile on people's faces with a good action</h1>
+                                <P data-animation="fadeInUp" data-delay=".8s" ></P>
+                                <!-- Hero-btn -->
+                                <div class="hero__btn">
+                                    <a href="/donationpage" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">Donate</a>
+                                    
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider Area End-->
+    <!--? Services Area Start -->
+    <div class="service-area section-padding30">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                       
+                        <h2>Put a smile on people's faces with a good action</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <span class="flaticon-null-1"></span>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="/leaderboard">Leaderboard</a></h5>
+                            <p>View a score board showing the names and current scores of the leading donator's. See where you stack up!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <span class="flaticon-think"></span>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="/foodbanks">Food Banks</a></h5>
+                            <p>Check out the food banks near you and see what food banks urgently need.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <span class="flaticon-gear"></span>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="/redeem">Redeem</a></h5>
+                            <p>Exchange your points for vouchers and discounts for all your favourite stores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services Area End -->
+    <!--? About Law Start-->
+    <section class="about-low-area section-padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-10">
+                    <div class="about-caption mb-50">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-35">
+                            <span>About our foundation</span>
+                            <h2>We Are On A Mission To Help Those In Need</h2>
+                        </div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <a href="/aboutus" class="btn">About Us</a>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+                        <div class="about-font-img d-none d-lg-block">
+                            <img src="/img/about2.png" alt="">
+                        </div>
+                        <div class="about-back-img ">
+                            <img src="/img/about1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Law End-->
+    <!-- Our Cases Start -->
+    <div style="padding-top: 0; padding-bottom: 3cm;" class="our-cases-area section-padding30">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                
+                            </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / progress -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Cases End -->
+  
+                <div class="col-lg-9 col-md-12">
+                    <!-- single-job-content -->
+                    <div class="single-job-items mb-30">
+                        <div class="job-items">
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+          <!-- Footer -->
+          
+          <footer style="color: black; background: #333" class="section-footer py-4">
+            <div class="container1">
+              <div>
+                <h2 style ="color: white; font-size: 2rem; font-weight: bold;">Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                 <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3 style ="color: white; font-size: 2rem; font-weight: bold;">Company Info</h3>
+                <ul>
+                  <li style ="color: white; font-size: 1.7rem;" class = "phone">Phone Number</li>
+                  <li style ="color: white; font-size: 1.7rem;" class = "email">Email Address</li>
+                  <li style ="color: white; font-size: 1.7rem;"><a href="/aboutus">About Us</a></li>
+                  <li style ="color: white; font-size: 1.7rem;"><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div style ="color: white;">
+                <h3 style ="color: white; font-size: 2rem; font-weight: bold;">Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5 style ="color:rgb(112, 112, 112); font-size: 1.5rem;">©2021 FoodHub, All Rights Reserved. </h5>
+              <h5 style = "color:rgb(112, 112, 112); font-size: 1.5rem;">THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+        
+          </footer>
+   
+           
+
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fa fa-level-up" style="font-size: 20px"></i></a>
+    </div>
+
+    <!-- JS here -->
+
+    <script src="/js/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="/js/jquery-1.12.4.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/animated.headline.js"></script>
+    <script src="/js/jquery.magnific-popup.js"></script>
+
+    <!-- Date Picker -->
+    <script src="/js/gijgo.min.js"></script>
+    <!-- Nice-select, sticky -->
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="/js/jquery.barfiller.js"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/hover-direction-snake.min.js"></script>
+
+    <!-- contact js -->
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+    
+    </body>
+</html>

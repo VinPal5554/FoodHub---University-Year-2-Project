@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Pending...</title>
+<link rel="stylesheet" href="/css/redeemtransaction.css" />
+
+
+  <style>
+         
+         	.darkMode {
+         		
+         		background-color: black;
+         		color: white;
+         	
+         	}
+         	
+         	.darkMode a {
+         	
+         		color: white;
+         	}
+         	
+         	.darkMode button {
+         	
+         		background-color: black;
+         		color: white;
+         	}
+         	
+         	.darkMode .btn {
+         		
+         		background-color: white;
+         		color: black;
+         	}
+         	
+         	.darkMode .btn2 {
+         		
+         		background-color: white;
+         		color: black;
+         	}
+         	
+         	.darkMode .btn:hover {
+         	
+         		background-color: grey;
+         		color: white;
+         	}
+         	
+         	.darkMode .btn2:hover {
+         	
+         		background-color: grey;
+         		color: white;
+         	}
+         	
+         	.darkMode td, th {
+         	
+         		border: 1px solid white;
+         	}
+         	
+         	.darkMode .darkModeButton {
+	
+				
+
+  				background: white;
+  				color: black;
+			}
+
+			.darkModeButton:hover {
+	
+				background-color: var(--secondary-color);
+				color: white;
+
+			}
+         	
+         	
+         	
+        </style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+	</svg>
+	
+	<button class="bi bi-moon-fill darkModeButton" onclick="darkModeOn()">ON</button >
+	<button class="darkModeButton" onclick="darkModeOff()">OFF</button>
+	
+	<div class="container">
+	<a href="/homepage">
+                <img src = "/img/foodhub.png" width="125px">
+    </a>
+      </div>
+      
+    <section class = "section-a">
+      <div class = "container">
+        <h2>Are you sure you want to redeem a voucher?</h2>
+        <br />
+        <form action="#" th:action="@{/save5}" th:object="${user}"
+            method="post">
+            
+          <input type="hidden" th:field="*{id}" readonly="readonly" />
+                   
+          <input type="hidden" th:field="*{username}" />
+                    
+          <input type="hidden" th:field="*{firstName}" />
+             
+          <input type="hidden" th:field="*{lastName}" />
+                
+          <input type="hidden" th:field="*{password}" />
+                
+          <input type="hidden" th:field="*{DOB}" />
+                
+          <input type="hidden" th:field="*{phoneNum}" />
+               
+          <input type="hidden" th:field="*{email}" />
+               
+          <input type="hidden" id="myVoucher" th:field="*{voucherCodes}" />
+               
+          <input type="hidden" th:field="*{roleType}" />
+              
+          <p>Current Points</p>
+          <h1 th:text="${user.points}"></h1>
+                 
+           <p>Points after</p>                    
+           <input type="text" id="pointsAfter" th:field="*{points}" readonly="readonly" />
+                  
+               
+                 <h3>Please Tick To Confirm Changes</h3>
+                    <th:block th:each="role : ${listRoles}">
+                    <div>
+					<input type="checkbox" th:field="*{roles}" th:text="${role.name}" th:value="${role.id}"  />
+					</div>
+					</th:block>       
+				                  
+				
+               
+                    <button type="submit">Continue</button> 
+  
+        </form>
+    </div>
+    </section>
+   
+          <footer class="section-footer py-4 bg-primary">
+            <div class="container">
+              <div>
+                <h2>Contact Us</h2>
+                <a href="https://twitter.com" target="mainframe">
+					<i class="fa fa-twitter-square" style="font-size:30px"></i>
+				</a>
+                <a href="http://facebook.com" target="mainframe">
+                  <i class="fa fa-facebook-official" style="font-size:30px"></i>
+                </a>
+                <a href="http://youtube.com" target="mainframe">
+                  <i class="fa fa-youtube-square" style="font-size:30px"></i>
+                </a>
+                <a href="https://github.com/BrunelCS/cs2001-2020_21-group-1-1" target="mainframe">
+                  <i class="fa fa-github" style="font-size:30px"></i>
+                </a>
+              </div>
+              <div>
+                <h3>Company Info</h3>
+                <ul>
+                  <li class = "phone">Phone Number</li>
+                  <li class = "email">Email Address</li>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/feedback">Feedback</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Contact Info</h3>
+                <ul>
+                  <li>+44 (0)1234567890</li>
+                  <li>Foodhub010@gmail.com</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class = "cr">
+              <h5>©2021 FoodHub, All Rights Reserved. </h5>
+              <h5>THIS IS A DEMO: All rights belong to their respective owners.</h5>
+            </div>
+          </footer>
+    
+     <script>
+     
+     var value = sessionStorage.getItem("value");
+		var redeemCost = 0;
+		
+		if(value == 1) {
+			
+			redeemCost = 400;
+		}
+		else if(value == 2) {
+			
+			redeemCost = 550;
+		}
+		else if(value == 3) {
+			
+			redeemCost = 700;
+		}
+		else if(value == 4) {
+			
+			redeemCost = 700;
+		}
+		else if(value == 5) {
+			
+			redeemCost = 550;
+		}
+		else if(value == 6) {
+		
+			redeemCost = 700;
+		}
+		else if(value == 7) {
+		
+			redeemCost = 700;
+		}
+		else if(value == 8) {
+		
+			redeemCost = 700;
+		}
+		else if(value == 9) {
+		
+			redeemCost = 400;
+		}
+		else if(value == 10) {
+		
+			redeemCost = 400;
+		}
+		
+			
+		var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", 
+			"U", "V", "W", "X", "Y", "Z"];
+		var code = "";
+		var difference = document.getElementById("pointsAfter").value - redeemCost;
+	
+		if(difference < 0) {
+			alert("You do not have enough points to redeem this voucher");
+			window.location = "http://localhost:8080/redeem";
+		}
+		else {
+			
+ 		document.getElementById("pointsAfter").value =  document.getElementById("pointsAfter").value - redeemCost;
+ 		
+ 		for(var i = 0; i < 5; ++i) {
+ 			
+ 			var index = Math.floor(Math.random() * 26);
+ 			code += alphabet[index];
+ 			
+ 		}
+ 		
+ 		if((document.getElementById("myVoucher").value).length < 5) {
+ 			
+ 			document.getElementById("myVoucher").value = "FOODHUB-" + code;
+ 		}
+ 		else {
+ 			
+ 			document.getElementById("myVoucher").value = document.getElementById("myVoucher").value + "//" + "FOODHUB-" + code;
+ 		}
+ 		
+		}
+     
+     </script>
+     
+     <script>
+          
+    
+          var value = sessionStorage.getItem("dark");
+          
+          if(value == 0) {
+        	  
+        	  darkModeOn();
+          }
+          else if(value == 1) {
+        	  darkModeOff();
+          }
+          
+          
+          
+			function darkModeOn() {
+				
+				var element = document.body;
+				element.classList.add("darkMode");
+				
+				sessionStorage.setItem("dark", 0);
+				
+			}
+ 		
+ 			function darkModeOff() {
+ 				
+ 				var element = document.body;
+				element.classList.remove("darkMode");
+ 				
+ 				sessionStorage.setItem("dark", 1);
+ 				
+ 			}
+ 			
+ 	</script>
+    
+</body>
+</html>
